@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Madiraa Jewels | Luxury Jewellery</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    :root {
+      --gold: #c9a227;
+      --rose-gold: #b76e79;
+      --champagne: #f7e7ce;
+      --dark: #0f0f0f;
+      --dark-2: #1a1a1a;
+      --text-light: #f5f5f5;
+      --text-muted: #b0b0b0;
+    }
+
+    [data-theme="light"] {
+      --dark: #faf8f5;
+      --dark-2: #ffffff;
+      --text-light: #1a1a1a;
+      --text-muted: #555;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--dark);
+      color: var(--text-light);
+      transition: background-color 0.4s, color 0.4s;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background: transparent;
+      transition: all 0.4s ease;
+      padding: 1rem 0;
+    }
+
+    .navbar.scrolled {
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      padding: 0.6rem 0;
+    }
+
+    [data-theme="light"] .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold) !important;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 400;
+      margin: 0 0.6rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .cart-icon, .theme-toggle {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .cart-icon:hover, .theme-toggle:hover {
+      color: var(--gold);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: var(--gold);
+      color: #000;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                  url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #e0e0e0;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), #e0c35c);
+      color: #000;
+      border: none;
+      padding: 0.85rem 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      border-radius: 50px;
+      transition: all 0.3s;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+      color: #000;
+    }
+
+    .btn-outline-gold {
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+      padding: 0.85rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.6rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ========== COLLECTIONS ========== */
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      height: 320px;
+      cursor: pointer;
+    }
+
+    .collection-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .collection-card:hover img {
+      transform: scale(1.12);
+    }
+
+    .collection-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+
+    .collection-overlay h4 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    .shine {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.6s;
+    }
+
+    .collection-card:hover .shine {
+      left: 100%;
+    }
+
+    /* ========== PRODUCTS ========== */
+    .filter-btns {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.45rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .product-card {
+      background: var(--dark-2);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.35s, box-shadow 0.35s;
+      border: 1px solid rgba(201, 162, 39, 0.15);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .product-img {
+      height: 260px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.1);
+    }
+
+    .wishlist {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.5);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .wishlist:hover,
+    .wishlist.active {
+      background: var(--rose-gold);
+      color: #fff;
+    }
+
+    .product-body {
+      padding: 1.2rem;
+    }
+
+    .product-body h5 {
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .product-price {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-bottom: 0.9rem;
+    }
+
+    /* ========== WHY US ========== */
+    .feature-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--dark-2);
+      border-radius: 14px;
+      border: 1px solid rgba(201, 162, 39, 0.12);
+      transition: all 0.35s;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, rgba(201,162,39,0.2), rgba(183,110,121,0.2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+
+    /* ========== BRIDAL SHOWCASE ========== */
+    .bridal-section {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                  url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      padding: 8rem 0;
+      text-align: center;
+    }
+
+    .bridal-section h2 {
+      font-size: 3rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .bridal-section p {
+      color: #ddd;
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonial-card {
+      background: var(--dark-2);
+      border-radius: 14px;
+      padding: 2rem;
+      border: 1px solid rgba(201, 162, 39, 0.12);
+      height: 100%;
+    }
+
+    .testimonial-card .stars {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .client-info h6 {
+      margin: 0;
+      color: var(--gold);
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-form {
+      background: var(--dark-2);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(201, 162, 39, 0.15);
+    }
+
+    .form-control, .form-select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201, 162, 39, 0.25);
+      color: var(--text-light);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+    }
+
+    .form-control:focus, .form-select:focus {
+      background: rgba(255,255,255,0.08);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.2);
+      color: var(--text-light);
+    }
+
+    .form-control::placeholder {
+      color: #888;
+    }
+
+    .form-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #0a0a0a;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(201, 162, 39, 0.15);
+    }
+
+    [data-theme="light"] footer {
+      background: #f0ebe3;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 162, 39, 0.15);
+      color: var(--gold);
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.6rem;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .newsletter-input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201, 162, 39, 0.3);
+      color: var(--text-light);
+      border-radius: 50px 0 0 50px;
+      padding: 0.7rem 1.2rem;
+    }
+
+    .newsletter-btn {
+      border-radius: 0 50px 50px 0;
+      background: var(--gold);
+      color: #000;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      font-weight: 500;
+    }
+
+    /* ========== BACK TO TOP ========== */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+      box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .section-title h2 { font-size: 2rem; }
+      .bridal-section h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">Madiraa Jewels</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list text-light fs-2" id="menuIcon"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#collections">Collections</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">New Arrivals</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-3">
+          <i class="bi bi-moon theme-toggle" id="themeToggle"></i>
+          <div class="cart-icon" id="cartIcon">
+            <i class="bi bi-bag"></i>
+            <span class="cart-count" id="cartCount">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Timeless Elegance,<br><span>Crafted for You</span></h1>
+        <p>Discover exquisite jewellery that tells your unique story. From everyday sparkle to bridal grandeur.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#products" class="btn btn-gold">Explore Collection</a>
+          <a href="#contact" class="btn btn-outline-gold">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURED COLLECTIONS ========== -->
+  <section id="collections">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Our Collections</h2>
+        <p>Explore our carefully curated jewellery categories</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 col-6 fade-in">
+          <div class="collection-card">
+            <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=800&q=80" alt="Gold">
+            <div class="shine"></div>
+            <div class="collection-overlay"><h4>Gold</h4></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-6 fade-in">
+          <div class="collection-card">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Diamond">
+            <div class="shine"></div>
+            <div class="collection-overlay"><h4>Diamond</h4></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-6 fade-in">
+          <div class="collection-card">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Bridal">
+            <div class="shine"></div>
+            <div class="collection-overlay"><h4>Bridal</h4></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-6 fade-in">
+          <div class="collection-card">
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80" alt="Everyday">
+            <div class="shine"></div>
+            <div class="collection-overlay"><h4>Everyday Wear</h4></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-6 fade-in">
+          <div class="collection-card">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80" alt="Silver">
+            <div class="shine"></div>
+            <div class="collection-overlay"><h4>Silver</h4></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-6 fade-in">
+          <div class="collection-card">
+            <img src="https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=800&q=80" alt="Custom">
+            <div class="shine"></div>
+            <div class="collection-overlay"><h4>Custom Design</h4></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEW ARRIVALS ========== -->
+  <section id="products" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>New Arrivals</h2>
+        <p>Fresh designs that redefine luxury</p>
+      </div>
+
+      <div class="filter-btns fade-in">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="gold">Gold</button>
+        <button class="filter-btn" data-filter="diamond">Diamond</button>
+        <button class="filter-btn" data-filter="bridal">Bridal</button>
+        <button class="filter-btn" data-filter="silver">Silver</button>
+      </div>
+
+      <div class="row g-4" id="productGrid">
+        <!-- Products will be injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Why Madiraa Jewels</h2>
+        <p>Crafted with passion, delivered with trust</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-3 col-6 fade-in">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-gem"></i></div>
+            <h5>Certified Diamonds</h5>
+            <p class="text-muted small mb-0">Every diamond is certified for authenticity & quality</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 fade-in">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+            <h5>Lifetime Polish</h5>
+            <p class="text-muted small mb-0">Free lifetime polishing & maintenance service</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 fade-in">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-arrow-repeat"></i></div>
+            <h5>Easy Exchange</h5>
+            <p class="text-muted small mb-0">Hassle-free exchange within 15 days</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6 fade-in">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="bi bi-brush"></i></div>
+            <h5>Custom Design</h5>
+            <p class="text-muted small mb-0">Bring your dream design to life with our experts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BRIDAL SHOWCASE ========== -->
+  <section class="bridal-section">
+    <div class="container fade-in">
+      <h2>Bridal Collection 2025</h2>
+      <p>Make your special day unforgettable with our exclusive bridal jewellery sets, crafted for the modern bride.</p>
+      <a href="#contact" class="btn btn-gold">Book Bridal Consultation</a>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section>
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>What Our Clients Say</h2>
+        <p>Stories of love and elegance</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4 fade-in">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"The bridal set I bought was beyond beautiful. The craftsmanship is exceptional and the staff was so helpful."</p>
+            <div class="client-info">
+              <h6>Priya Sharma</h6>
+              <small class="text-muted">Mumbai</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Madiraa Jewels has become my go-to place. Their everyday wear collection is elegant yet comfortable."</p>
+            <div class="client-info">
+              <h6>Ananya Patel</h6>
+              <small class="text-muted">Pune</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Custom designed my engagement ring here. They brought my vision to life perfectly. Highly recommended!"</p>
+            <div class="client-info">
+              <h6>Rahul & Sneha</h6>
+              <small class="text-muted">Nagpur</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT / APPOINTMENT ========== -->
+  <section id="contact" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Book an Appointment</h2>
+        <p>Visit our store or schedule a personal consultation</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 fade-in">
+          <form class="contact-form" id="appointmentForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-control" id="name" placeholder="Your name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" class="form-control" id="phone" placeholder="+91 98765 43210" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Preferred Date</label>
+                <input type="date" class="form-control" id="date">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Tell us what you're looking for..."></textarea>
+              </div>
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-gold px-5">Book Store Visit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand mb-3">Madiraa Jewels</div>
+          <p class="text-muted" style="font-size: 0.95rem;">Crafting timeless elegance since 2010. Every piece tells a story of love, tradition and unmatched craftsmanship.</p>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h6 class="text-gold mb-3" style="color: var(--gold);">Quick Links</h6>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#collections">Collections</a>
+            <a href="#products">New Arrivals</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6 style="color: var(--gold);" class="mb-3">Visit Us</h6>
+          <p class="text-muted small mb-1"><i class="bi bi-geo-alt me-2"></i> 45, Jewellery Market, Pune</p>
+          <p class="text-muted small mb-1"><i class="bi bi-telephone me-2"></i> +91 98765 43210</p>
+          <p class="text-muted small"><i class="bi bi-envelope me-2"></i> hello@madiraajewels.com</p>
+        </div>
+        <div class="col-lg-3">
+          <h6 style="color: var(--gold);" class="mb-3">Newsletter</h6>
+          <p class="text-muted small">Get exclusive offers & new designs first.</p>
+          <div class="input-group">
+            <input type="email" class="form-control newsletter-input" placeholder="Your email">
+            <button class="newsletter-btn">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4" style="border-color: rgba(201,162,39,0.15);">
+      <div class="text-center text-muted small">
+        © 2025 Madiraa Jewels. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="backToTop"><i class="bi bi-arrow-up"></i></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ========== PRODUCTS DATA ==========
+    const products = [
+      { id: 1, name: "Royal Gold Necklace", price: "₹1,25,000", category: "gold", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" },
+      { id: 2, name: "Diamond Solitaire Ring", price: "₹85,000", category: "diamond", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" },
+      { id: 3, name: "Bridal Choker Set", price: "₹2,45,000", category: "bridal", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80" },
+      { id: 4, name: "Silver Anklet Pair", price: "₹4,500", category: "silver", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" },
+      { id: 5, name: "Rose Gold Earrings", price: "₹32,000", category: "gold", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
+      { id: 6, name: "Diamond Pendant", price: "₹67,000", category: "diamond", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80" },
+      { id: 7, name: "Temple Jewellery Set", price: "₹1,85,000", category: "bridal", img: "https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=600&q=80" },
+      { id: 8, name: "Classic Gold Bangles", price: "₹78,000", category: "gold", img: "https://images.unsplash.com/photo-1611652022419-a9419f74343a?auto=format&fit=crop&w=600&q=80" },
+      { id: 9, name: "Silver Oxidised Jhumkas", price: "₹3,200", category: "silver", img: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" },
+      { id: 10, name: "Emerald Diamond Ring", price: "₹1,10,000", category: "diamond", img: "https://images.unsplash.com/photo-1603561591411-07134e71a2b9?auto=format&fit=crop&w=600&q=80" },
+      { id: 11, name: "Kundan Bridal Set", price: "₹2,10,000", category: "bridal", img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=600&q=80" },
+      { id: 12, name: "Minimal Gold Chain", price: "₹28,500", category: "gold", img: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=600&q=80" }
+    ];
+
+    // ========== RENDER PRODUCTS ==========
+    const productGrid = document.getElementById('productGrid');
+
+    function renderProducts(filter = 'all') {
+      productGrid.innerHTML = '';
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+      filtered.forEach(product => {
+        const col = document.createElement('div');
+        col.className = 'col-lg-3 col-md-4 col-6 product-item fade-in';
+        col.innerHTML = `
+          <div class="product-card">
+            <div class="product-img">
+              <img src="${product.img}" alt="${product.name}">
+              <div class="wishlist" onclick="toggleWishlist(this)"><i class="bi bi-heart"></i></div>
+            </div>
+            <div class="product-body">
+              <h5>${product.name}</h5>
+              <div class="product-price">${product.price}</div>
+              <button class="btn btn-sm btn-gold w-100" onclick="addToCart()">Add to Cart</button>
+            </div>
+          </div>
+        `;
+        productGrid.appendChild(col);
+      });
+
+      // Re-observe new elements for animation
+      observeFadeIns();
+    }
+
+    renderProducts();
+
+    // ========== FILTER ==========
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProducts(btn.dataset.filter);
+      });
+    });
+
+    // ========== CART ==========
+    let cartCount = 0;
+    function addToCart() {
+      cartCount++;
+      document.getElementById('cartCount').textContent = cartCount;
+    }
+
+    // ========== WISHLIST ==========
+    function toggleWishlist(el) {
+      el.classList.toggle('active');
+      const icon = el.querySelector('i');
+      icon.classList.toggle('bi-heart');
+      icon.classList.toggle('bi-heart-fill');
+    }
+
+    // ========== DARK / LIGHT MODE ==========
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isLight = html.getAttribute('data-theme') === 'light';
+      html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      themeToggle.classList.toggle('bi-moon');
+      themeToggle.classList.toggle('bi-sun');
+    });
+
+    // ========== STICKY NAVBAR ==========
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Back to top
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 400) {
+        backToTop.classList.add('show');
+      } else {
+        backToTop.classList.remove('show');
+      }
+    });
+
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ========== SMOOTH SCROLL ==========
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ========== FORM VALIDATION ==========
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+
+      if (!name || !phone) {
+        alert('Please fill in Name and Phone number.');
+        return;
+      }
+
+      if (!/^[0-9+\-\s]{10,15}$/.test(phone)) {
+        alert('Please enter a valid phone number.');
+        return;
+      }
+
+      alert('Thank you! Your appointment request has been received. We will contact you shortly.');
+      this.reset();
+    });
+
+    // ========== SCROLL ANIMATIONS ==========
+    function observeFadeIns() {
+      const fadeEls = document.querySelectorAll('.fade-in:not(.visible)');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15 });
+
+      fadeEls.forEach(el => observer.observe(el));
+    }
+
+    observeFadeIns();
+  </script>
+</body>
+</html>
