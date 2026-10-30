@@ -32,11 +32,7 @@
       --text-muted: #555;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -46,27 +42,21 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
-    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
 
-    /* ========== NAVBAR ========== */
+    /* NAVBAR */
     .navbar {
       background: transparent;
       transition: all 0.4s ease;
       padding: 1rem 0;
     }
-
     .navbar.scrolled {
       background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(12px);
       box-shadow: 0 4px 30px rgba(0,0,0,0.3);
       padding: 0.6rem 0;
     }
-
-    [data-theme="light"] .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.95);
-    }
+    [data-theme="light"] .navbar.scrolled { background: rgba(255, 255, 255, 0.95); }
 
     .navbar-brand {
       font-family: 'Playfair Display', serif;
@@ -83,12 +73,7 @@
       position: relative;
       transition: color 0.3s;
     }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: var(--gold) !important;
-    }
-
+    .nav-link:hover, .nav-link.active { color: var(--gold) !important; }
     .nav-link::after {
       content: '';
       position: absolute;
@@ -99,10 +84,7 @@
       background: var(--gold);
       transition: width 0.3s;
     }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
+    .nav-link:hover::after { width: 100%; }
 
     .cart-icon, .theme-toggle {
       font-size: 1.3rem;
@@ -111,10 +93,7 @@
       transition: color 0.3s;
       position: relative;
     }
-
-    .cart-icon:hover, .theme-toggle:hover {
-      color: var(--gold);
-    }
+    .cart-icon:hover, .theme-toggle:hover { color: var(--gold); }
 
     .cart-count {
       position: absolute;
@@ -132,21 +111,15 @@
       font-weight: 600;
     }
 
-    /* ========== HERO ========== */
+    /* HERO */
     .hero {
       height: 100vh;
       background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
                   url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
       display: flex;
       align-items: center;
-      position: relative;
     }
-
-    .hero-content {
-      max-width: 700px;
-      animation: fadeUp 1.2s ease;
-    }
-
+    .hero-content { max-width: 700px; animation: fadeUp 1.2s ease; }
     .hero h1 {
       font-size: 3.8rem;
       font-weight: 600;
@@ -154,11 +127,7 @@
       margin-bottom: 1rem;
       line-height: 1.2;
     }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
+    .hero h1 span { color: var(--gold); }
     .hero p {
       font-size: 1.2rem;
       color: #e0e0e0;
@@ -176,13 +145,11 @@
       border-radius: 50px;
       transition: all 0.3s;
     }
-
     .btn-gold:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
       color: #000;
     }
-
     .btn-outline-gold {
       border: 1.5px solid var(--gold);
       color: var(--gold);
@@ -192,34 +159,14 @@
       font-weight: 500;
       transition: all 0.3s;
     }
+    .btn-outline-gold:hover { background: var(--gold); color: #000; }
 
-    .btn-outline-gold:hover {
-      background: var(--gold);
-      color: #000;
-    }
+    section { padding: 6rem 0; }
+    .section-title { text-align: center; margin-bottom: 3.5rem; }
+    .section-title h2 { font-size: 2.6rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .section-title p { color: var(--text-muted); font-size: 1.05rem; }
 
-    /* ========== SECTIONS ========== */
-    section {
-      padding: 6rem 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.6rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    /* ========== COLLECTIONS ========== */
+    /* COLLECTIONS */
     .collection-card {
       position: relative;
       overflow: hidden;
@@ -227,18 +174,13 @@
       height: 320px;
       cursor: pointer;
     }
-
     .collection-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
-
-    .collection-card:hover img {
-      transform: scale(1.12);
-    }
-
+    .collection-card:hover img { transform: scale(1.12); }
     .collection-overlay {
       position: absolute;
       inset: 0;
@@ -247,13 +189,7 @@
       align-items: flex-end;
       padding: 1.5rem;
     }
-
-    .collection-overlay h4 {
-      color: #fff;
-      font-size: 1.4rem;
-      margin: 0;
-    }
-
+    .collection-overlay h4 { color: #fff; font-size: 1.4rem; margin: 0; }
     .shine {
       position: absolute;
       top: 0;
@@ -263,12 +199,9 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
       transition: left 0.6s;
     }
+    .collection-card:hover .shine { left: 100%; }
 
-    .collection-card:hover .shine {
-      left: 100%;
-    }
-
-    /* ========== PRODUCTS ========== */
+    /* PRODUCTS */
     .filter-btns {
       display: flex;
       justify-content: center;
@@ -276,7 +209,6 @@
       gap: 0.8rem;
       margin-bottom: 2.5rem;
     }
-
     .filter-btn {
       background: transparent;
       border: 1px solid var(--gold);
@@ -287,9 +219,7 @@
       transition: all 0.3s;
       cursor: pointer;
     }
-
-    .filter-btn.active,
-    .filter-btn:hover {
+    .filter-btn.active, .filter-btn:hover {
       background: var(--gold);
       color: #000;
     }
@@ -301,28 +231,22 @@
       transition: transform 0.35s, box-shadow 0.35s;
       border: 1px solid rgba(201, 162, 39, 0.15);
     }
-
     .product-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 15px 40px rgba(0,0,0,0.35);
     }
-
     .product-img {
       height: 260px;
       overflow: hidden;
       position: relative;
     }
-
     .product-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.5s;
     }
-
-    .product-card:hover .product-img img {
-      transform: scale(1.1);
-    }
+    .product-card:hover .product-img img { transform: scale(1.1); }
 
     .wishlist {
       position: absolute;
@@ -339,22 +263,13 @@
       cursor: pointer;
       transition: all 0.3s;
     }
-
-    .wishlist:hover,
-    .wishlist.active {
+    .wishlist:hover, .wishlist.active {
       background: var(--rose-gold);
       color: #fff;
     }
 
-    .product-body {
-      padding: 1.2rem;
-    }
-
-    .product-body h5 {
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
-    }
-
+    .product-body { padding: 1.2rem; }
+    .product-body h5 { font-size: 1.1rem; margin-bottom: 0.3rem; }
     .product-price {
       color: var(--gold);
       font-weight: 600;
@@ -362,7 +277,7 @@
       margin-bottom: 0.9rem;
     }
 
-    /* ========== WHY US ========== */
+    /* FEATURES */
     .feature-card {
       text-align: center;
       padding: 2rem 1.5rem;
@@ -372,12 +287,10 @@
       transition: all 0.35s;
       height: 100%;
     }
-
     .feature-card:hover {
       border-color: var(--gold);
       transform: translateY(-6px);
     }
-
     .feature-icon {
       width: 70px;
       height: 70px;
@@ -391,20 +304,14 @@
       color: var(--gold);
     }
 
-    /* ========== BRIDAL SHOWCASE ========== */
+    /* BRIDAL */
     .bridal-section {
       background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
                   url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
       padding: 8rem 0;
       text-align: center;
     }
-
-    .bridal-section h2 {
-      font-size: 3rem;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
+    .bridal-section h2 { font-size: 3rem; color: #fff; margin-bottom: 1rem; }
     .bridal-section p {
       color: #ddd;
       font-size: 1.15rem;
@@ -412,7 +319,7 @@
       margin: 0 auto 2rem;
     }
 
-    /* ========== TESTIMONIALS ========== */
+    /* TESTIMONIALS */
     .testimonial-card {
       background: var(--dark-2);
       border-radius: 14px;
@@ -420,31 +327,21 @@
       border: 1px solid rgba(201, 162, 39, 0.12);
       height: 100%;
     }
-
-    .testimonial-card .stars {
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
+    .testimonial-card .stars { color: var(--gold); margin-bottom: 1rem; }
     .testimonial-card p {
       font-style: italic;
       color: var(--text-muted);
       margin-bottom: 1.2rem;
     }
+    .client-info h6 { margin: 0; color: var(--gold); }
 
-    .client-info h6 {
-      margin: 0;
-      color: var(--gold);
-    }
-
-    /* ========== CONTACT ========== */
+    /* CONTACT */
     .contact-form {
       background: var(--dark-2);
       padding: 2.5rem;
       border-radius: 16px;
       border: 1px solid rgba(201, 162, 39, 0.15);
     }
-
     .form-control, .form-select {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(201, 162, 39, 0.25);
@@ -452,40 +349,27 @@
       padding: 0.75rem 1rem;
       border-radius: 8px;
     }
-
     .form-control:focus, .form-select:focus {
       background: rgba(255,255,255,0.08);
       border-color: var(--gold);
       box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.2);
       color: var(--text-light);
     }
+    .form-control::placeholder { color: #888; }
+    .form-label { color: var(--text-muted); font-size: 0.9rem; }
 
-    .form-control::placeholder {
-      color: #888;
-    }
-
-    .form-label {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* ========== FOOTER ========== */
+    /* FOOTER */
     footer {
       background: #0a0a0a;
       padding: 4rem 0 2rem;
       border-top: 1px solid rgba(201, 162, 39, 0.15);
     }
-
-    [data-theme="light"] footer {
-      background: #f0ebe3;
-    }
-
+    [data-theme="light"] footer { background: #f0ebe3; }
     .footer-brand {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       color: var(--gold);
     }
-
     .footer-links a {
       color: var(--text-muted);
       text-decoration: none;
@@ -493,11 +377,7 @@
       margin-bottom: 0.5rem;
       transition: color 0.3s;
     }
-
-    .footer-links a:hover {
-      color: var(--gold);
-    }
-
+    .footer-links a:hover { color: var(--gold); }
     .social-icons a {
       display: inline-flex;
       width: 40px;
@@ -510,12 +390,7 @@
       margin-right: 0.6rem;
       transition: all 0.3s;
     }
-
-    .social-icons a:hover {
-      background: var(--gold);
-      color: #000;
-    }
-
+    .social-icons a:hover { background: var(--gold); color: #000; }
     .newsletter-input {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(201, 162, 39, 0.3);
@@ -523,7 +398,6 @@
       border-radius: 50px 0 0 50px;
       padding: 0.7rem 1.2rem;
     }
-
     .newsletter-btn {
       border-radius: 0 50px 50px 0;
       background: var(--gold);
@@ -533,7 +407,7 @@
       font-weight: 500;
     }
 
-    /* ========== BACK TO TOP ========== */
+    /* BACK TO TOP */
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -554,40 +428,148 @@
       z-index: 999;
       box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
     }
+    .back-to-top.show { opacity: 1; visibility: visible; }
 
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
+    /* ========== CART SIDEBAR ========== */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 95vw;
+      height: 100vh;
+      background: var(--dark-2);
+      box-shadow: -10px 0 40px rgba(0,0,0,0.4);
+      z-index: 1050;
+      transition: right 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-sidebar.open { right: 0; }
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1040;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    .cart-overlay.show { opacity: 1; visibility: visible; }
+
+    .cart-header {
+      padding: 1.3rem 1.5rem;
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-header h4 { margin: 0; color: var(--gold); font-size: 1.4rem; }
+    .cart-close {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+    .cart-close:hover { color: var(--gold); }
+
+    .cart-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
     }
 
-    /* ========== ANIMATIONS ========== */
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201,162,39,0.12);
+    }
+    .cart-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-info h6 { margin: 0 0 0.3rem; font-size: 0.95rem; }
+    .cart-item-price { color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .qty-btn:hover { background: var(--gold); color: #000; }
+    .qty-value { min-width: 20px; text-align: center; }
+
+    .remove-item {
+      color: #ff6b6b;
+      cursor: pointer;
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      display: inline-block;
+    }
+    .remove-item:hover { text-decoration: underline; }
+
+    .cart-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+    .cart-empty i { font-size: 3rem; margin-bottom: 1rem; color: var(--gold); }
+
+    .cart-footer {
+      padding: 1.3rem 1.5rem;
+      border-top: 1px solid rgba(201,162,39,0.2);
+    }
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .cart-total span:last-child { color: var(--gold); }
+
+    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
       transition: all 0.8s ease;
     }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.4rem; }
       .section-title h2 { font-size: 2rem; }
       .bridal-section h2 { font-size: 2.2rem; }
+      .cart-sidebar { width: 100%; max-width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== NAVBAR ========== -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
     <div class="container">
       <a class="navbar-brand" href="#">Madiraa Jewels</a>
@@ -604,7 +586,7 @@
         </ul>
         <div class="d-flex align-items-center gap-3">
           <i class="bi bi-moon theme-toggle" id="themeToggle"></i>
-          <div class="cart-icon" id="cartIcon">
+          <div class="cart-icon" id="cartIcon" onclick="openCart()">
             <i class="bi bi-bag"></i>
             <span class="cart-count" id="cartCount">0</span>
           </div>
@@ -613,7 +595,7 @@
     </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-content">
@@ -627,7 +609,7 @@
     </div>
   </section>
 
-  <!-- ========== FEATURED COLLECTIONS ========== -->
+  <!-- COLLECTIONS -->
   <section id="collections">
     <div class="container">
       <div class="section-title fade-in">
@@ -681,14 +663,13 @@
     </div>
   </section>
 
-  <!-- ========== NEW ARRIVALS ========== -->
+  <!-- NEW ARRIVALS -->
   <section id="products" style="background: rgba(255,255,255,0.02);">
     <div class="container">
       <div class="section-title fade-in">
         <h2>New Arrivals</h2>
         <p>Fresh designs that redefine luxury</p>
       </div>
-
       <div class="filter-btns fade-in">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="gold">Gold</button>
@@ -696,14 +677,11 @@
         <button class="filter-btn" data-filter="bridal">Bridal</button>
         <button class="filter-btn" data-filter="silver">Silver</button>
       </div>
-
-      <div class="row g-4" id="productGrid">
-        <!-- Products will be injected by JS -->
-      </div>
+      <div class="row g-4" id="productGrid"></div>
     </div>
   </section>
 
-  <!-- ========== WHY CHOOSE US ========== -->
+  <!-- WHY US -->
   <section id="about">
     <div class="container">
       <div class="section-title fade-in">
@@ -743,7 +721,7 @@
     </div>
   </section>
 
-  <!-- ========== BRIDAL SHOWCASE ========== -->
+  <!-- BRIDAL -->
   <section class="bridal-section">
     <div class="container fade-in">
       <h2>Bridal Collection 2025</h2>
@@ -752,7 +730,7 @@
     </div>
   </section>
 
-  <!-- ========== TESTIMONIALS ========== -->
+  <!-- TESTIMONIALS -->
   <section>
     <div class="container">
       <div class="section-title fade-in">
@@ -794,7 +772,7 @@
     </div>
   </section>
 
-  <!-- ========== CONTACT / APPOINTMENT ========== -->
+  <!-- CONTACT -->
   <section id="contact" style="background: rgba(255,255,255,0.02);">
     <div class="container">
       <div class="section-title fade-in">
@@ -835,7 +813,7 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="row g-4">
@@ -850,7 +828,7 @@
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <h6 class="text-gold mb-3" style="color: var(--gold);">Quick Links</h6>
+          <h6 style="color: var(--gold);" class="mb-3">Quick Links</h6>
           <div class="footer-links">
             <a href="#home">Home</a>
             <a href="#collections">Collections</a>
@@ -875,14 +853,33 @@
         </div>
       </div>
       <hr class="my-4" style="border-color: rgba(201,162,39,0.15);">
-      <div class="text-center text-muted small">
-        © 2025 Madiraa Jewels. All rights reserved.
-      </div>
+      <div class="text-center text-muted small">© 2025 Madiraa Jewels. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Back to Top -->
+  <!-- BACK TO TOP -->
   <div class="back-to-top" id="backToTop"><i class="bi bi-arrow-up"></i></div>
+
+  <!-- CART OVERLAY -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h4><i class="bi bi-bag me-2"></i>Your Cart</h4>
+      <i class="bi bi-x-lg cart-close" onclick="closeCart()"></i>
+    </div>
+    <div class="cart-body" id="cartBody">
+      <!-- Cart items will be injected here -->
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="btn btn-gold w-100" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+  </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -890,19 +887,120 @@
   <script>
     // ========== PRODUCTS DATA ==========
     const products = [
-      { id: 1, name: "Royal Gold Necklace", price: "₹1,25,000", category: "gold", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" },
-      { id: 2, name: "Diamond Solitaire Ring", price: "₹85,000", category: "diamond", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" },
-      { id: 3, name: "Bridal Choker Set", price: "₹2,45,000", category: "bridal", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80" },
-      { id: 4, name: "Silver Anklet Pair", price: "₹4,500", category: "silver", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" },
-      { id: 5, name: "Rose Gold Earrings", price: "₹32,000", category: "gold", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
-      { id: 6, name: "Diamond Pendant", price: "₹67,000", category: "diamond", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80" },
-      { id: 7, name: "Temple Jewellery Set", price: "₹1,85,000", category: "bridal", img: "https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=600&q=80" },
-      { id: 8, name: "Classic Gold Bangles", price: "₹78,000", category: "gold", img: "https://images.unsplash.com/photo-1611652022419-a9419f74343a?auto=format&fit=crop&w=600&q=80" },
-      { id: 9, name: "Silver Oxidised Jhumkas", price: "₹3,200", category: "silver", img: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" },
-      { id: 10, name: "Emerald Diamond Ring", price: "₹1,10,000", category: "diamond", img: "https://images.unsplash.com/photo-1603561591411-07134e71a2b9?auto=format&fit=crop&w=600&q=80" },
-      { id: 11, name: "Kundan Bridal Set", price: "₹2,10,000", category: "bridal", img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=600&q=80" },
-      { id: 12, name: "Minimal Gold Chain", price: "₹28,500", category: "gold", img: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=600&q=80" }
+      { id: 1, name: "Royal Gold Necklace", price: 125000, priceText: "₹1,25,000", category: "gold", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" },
+      { id: 2, name: "Diamond Solitaire Ring", price: 85000, priceText: "₹85,000", category: "diamond", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" },
+      { id: 3, name: "Bridal Choker Set", price: 245000, priceText: "₹2,45,000", category: "bridal", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80" },
+      { id: 4, name: "Silver Anklet Pair", price: 4500, priceText: "₹4,500", category: "silver", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" },
+      { id: 5, name: "Rose Gold Earrings", price: 32000, priceText: "₹32,000", category: "gold", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
+      { id: 6, name: "Diamond Pendant", price: 67000, priceText: "₹67,000", category: "diamond", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80" },
+      { id: 7, name: "Temple Jewellery Set", price: 185000, priceText: "₹1,85,000", category: "bridal", img: "https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=600&q=80" },
+      { id: 8, name: "Classic Gold Bangles", price: 78000, priceText: "₹78,000", category: "gold", img: "https://images.unsplash.com/photo-1611652022419-a9419f74343a?auto=format&fit=crop&w=600&q=80" },
+      { id: 9, name: "Silver Oxidised Jhumkas", price: 3200, priceText: "₹3,200", category: "silver", img: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" },
+      { id: 10, name: "Emerald Diamond Ring", price: 110000, priceText: "₹1,10,000", category: "diamond", img: "https://images.unsplash.com/photo-1603561591411-07134e71a2b9?auto=format&fit=crop&w=600&q=80" },
+      { id: 11, name: "Kundan Bridal Set", price: 210000, priceText: "₹2,10,000", category: "bridal", img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=600&q=80" },
+      { id: 12, name: "Minimal Gold Chain", price: 28500, priceText: "₹28,500", category: "gold", img: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=600&q=80" }
     ];
+
+    // ========== CART ==========
+    let cart = [];
+
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      updateCartUI();
+      openCart();
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      updateCartUI();
+    }
+
+    function changeQty(productId, delta) {
+      const item = cart.find(i => i.id === productId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        removeFromCart(productId);
+      } else {
+        updateCartUI();
+      }
+    }
+
+    function updateCartUI() {
+      const cartBody = document.getElementById('cartBody');
+      const cartFooter = document.getElementById('cartFooter');
+      const cartCount = document.getElementById('cartCount');
+      const cartTotal = document.getElementById('cartTotal');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartCount.textContent = totalItems;
+
+      if (cart.length === 0) {
+        cartBody.innerHTML = `
+          <div class="cart-empty">
+            <i class="bi bi-bag"></i>
+            <p>Your cart is empty</p>
+            <small>Add some beautiful jewellery!</small>
+          </div>
+        `;
+        cartFooter.style.display = 'none';
+        return;
+      }
+
+      let html = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        html += `
+          <div class="cart-item">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="cart-item-info">
+              <h6>${item.name}</h6>
+              <div class="cart-item-price">${item.priceText}</div>
+              <div class="qty-control">
+                <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+                <span class="qty-value">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+              </div>
+              <span class="remove-item" onclick="removeFromCart(${item.id})">Remove</span>
+            </div>
+          </div>
+        `;
+      });
+
+      cartBody.innerHTML = html;
+      cartTotal.textContent = '₹' + total.toLocaleString('en-IN');
+      cartFooter.style.display = 'block';
+    }
+
+    function openCart() {
+      document.getElementById('cartSidebar').classList.add('open');
+      document.getElementById('cartOverlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cartSidebar').classList.remove('open');
+      document.getElementById('cartOverlay').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    function checkout() {
+      if (cart.length === 0) return;
+      alert('Thank you! Your order has been placed.\nTotal: ' + document.getElementById('cartTotal').textContent + '\n\nWe will contact you shortly.');
+      cart = [];
+      updateCartUI();
+      closeCart();
+    }
 
     // ========== RENDER PRODUCTS ==========
     const productGrid = document.getElementById('productGrid');
@@ -922,21 +1020,19 @@
             </div>
             <div class="product-body">
               <h5>${product.name}</h5>
-              <div class="product-price">${product.price}</div>
-              <button class="btn btn-sm btn-gold w-100" onclick="addToCart()">Add to Cart</button>
+              <div class="product-price">${product.priceText}</div>
+              <button class="btn btn-sm btn-gold w-100" onclick="addToCart(${product.id})">Add to Cart</button>
             </div>
           </div>
         `;
         productGrid.appendChild(col);
       });
-
-      // Re-observe new elements for animation
       observeFadeIns();
     }
 
     renderProducts();
 
-    // ========== FILTER ==========
+    // FILTER
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -945,14 +1041,7 @@
       });
     });
 
-    // ========== CART ==========
-    let cartCount = 0;
-    function addToCart() {
-      cartCount++;
-      document.getElementById('cartCount').textContent = cartCount;
-    }
-
-    // ========== WISHLIST ==========
+    // WISHLIST
     function toggleWishlist(el) {
       el.classList.toggle('active');
       const icon = el.querySelector('i');
@@ -960,7 +1049,7 @@
       icon.classList.toggle('bi-heart-fill');
     }
 
-    // ========== DARK / LIGHT MODE ==========
+    // THEME
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
       const html = document.documentElement;
@@ -970,73 +1059,57 @@
       themeToggle.classList.toggle('bi-sun');
     });
 
-    // ========== STICKY NAVBAR ==========
+    // STICKY NAV + BACK TO TOP
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
+      if (window.scrollY > 80) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
 
-      // Back to top
       const backToTop = document.getElementById('backToTop');
-      if (window.scrollY > 400) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
+      if (window.scrollY > 400) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
     });
 
     document.getElementById('backToTop').addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ========== SMOOTH SCROLL ==========
+    // SMOOTH SCROLL
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
-    // ========== FORM VALIDATION ==========
+    // FORM
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
-
       if (!name || !phone) {
         alert('Please fill in Name and Phone number.');
         return;
       }
-
       if (!/^[0-9+\-\s]{10,15}$/.test(phone)) {
         alert('Please enter a valid phone number.');
         return;
       }
-
       alert('Thank you! Your appointment request has been received. We will contact you shortly.');
       this.reset();
     });
 
-    // ========== SCROLL ANIMATIONS ==========
+    // FADE IN
     function observeFadeIns() {
       const fadeEls = document.querySelectorAll('.fade-in:not(.visible)');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       }, { threshold: 0.15 });
-
       fadeEls.forEach(el => observer.observe(el));
     }
-
     observeFadeIns();
   </script>
 </body>
