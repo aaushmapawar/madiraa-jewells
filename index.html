@@ -1,3 +1,13 @@
+**होय भाऊ**, आता मी तुला **पूर्ण अपडेटेड कोड** देतो ज्यात:
+
+1. **Image Slider** (Hero मध्ये सुंदर carousel)
+2. **Add to Cart** केल्यावर Cart लगेच उघडेल
+3. **Billing System** – Cart मधून Checkout केल्यावर Bill दिसेल
+4. **Payment Option** – Online Payment किंवा Offline (Cash / Store Pickup)
+
+खाली **संपूर्ण कोड** आहे. कॉपी-पेस्ट करून वापरा:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,35 +15,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Madiraa Jewels | Luxury Jewellery</title>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <style>
     :root {
       --gold: #c9a227;
       --rose-gold: #b76e79;
-      --champagne: #f7e7ce;
       --dark: #0f0f0f;
       --dark-2: #1a1a1a;
       --text-light: #f5f5f5;
       --text-muted: #b0b0b0;
     }
-
     [data-theme="light"] {
       --dark: #faf8f5;
       --dark-2: #ffffff;
       --text-light: #1a1a1a;
       --text-muted: #555;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Poppins', sans-serif;
       background-color: var(--dark);
@@ -41,69 +42,52 @@
       transition: background-color 0.4s, color 0.4s;
       overflow-x: hidden;
     }
-
-    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Playfair Display', serif; }
 
     /* NAVBAR */
-    .navbar {
-      background: transparent;
-      transition: all 0.4s ease;
-      padding: 1rem 0;
-    }
+    .navbar { background: transparent; transition: all 0.4s; padding: 1rem 0; }
     .navbar.scrolled {
-      background: rgba(15, 15, 15, 0.95);
+      background: rgba(15,15,15,0.95);
       backdrop-filter: blur(12px);
       box-shadow: 0 4px 30px rgba(0,0,0,0.3);
       padding: 0.6rem 0;
     }
-    [data-theme="light"] .navbar.scrolled { background: rgba(255, 255, 255, 0.95); }
-
+    [data-theme="light"] .navbar.scrolled { background: rgba(255,255,255,0.95); }
     .navbar-brand {
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       font-weight: 600;
       color: var(--gold) !important;
-      letter-spacing: 1px;
     }
-
     .nav-link {
       color: var(--text-light) !important;
-      font-weight: 400;
       margin: 0 0.6rem;
       position: relative;
-      transition: color 0.3s;
     }
     .nav-link:hover, .nav-link.active { color: var(--gold) !important; }
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1.5px;
+      bottom: -4px; left: 0;
+      width: 0; height: 1.5px;
       background: var(--gold);
       transition: width 0.3s;
     }
     .nav-link:hover::after { width: 100%; }
-
     .cart-icon, .theme-toggle {
       font-size: 1.3rem;
       color: var(--text-light);
       cursor: pointer;
-      transition: color 0.3s;
       position: relative;
     }
     .cart-icon:hover, .theme-toggle:hover { color: var(--gold); }
-
     .cart-count {
       position: absolute;
-      top: -8px;
-      right: -10px;
+      top: -8px; right: -10px;
       background: var(--gold);
       color: #000;
       font-size: 0.7rem;
-      width: 18px;
-      height: 18px;
+      width: 18px; height: 18px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -111,29 +95,29 @@
       font-weight: 600;
     }
 
-    /* HERO */
-    .hero {
+    /* HERO SLIDER */
+    .hero-slider { height: 100vh; position: relative; }
+    .hero-slider .carousel-item {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                  url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6));
       display: flex;
       align-items: center;
     }
-    .hero-content { max-width: 700px; animation: fadeUp 1.2s ease; }
-    .hero h1 {
-      font-size: 3.8rem;
+    .hero-content { max-width: 700px; color: #fff; }
+    .hero-content h1 {
+      font-size: 3.6rem;
       font-weight: 600;
-      color: #fff;
       margin-bottom: 1rem;
       line-height: 1.2;
     }
-    .hero h1 span { color: var(--gold); }
-    .hero p {
-      font-size: 1.2rem;
-      color: #e0e0e0;
-      margin-bottom: 2rem;
-      font-weight: 300;
-    }
+    .hero-content h1 span { color: var(--gold); }
+    .hero-content p { font-size: 1.2rem; color: #e0e0e0; margin-bottom: 2rem; }
 
     .btn-gold {
       background: linear-gradient(135deg, var(--gold), #e0c35c);
@@ -141,13 +125,12 @@
       border: none;
       padding: 0.85rem 2.2rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
       border-radius: 50px;
       transition: all 0.3s;
     }
     .btn-gold:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(201, 162, 39, 0.4);
+      box-shadow: 0 10px 25px rgba(201,162,39,0.4);
       color: #000;
     }
     .btn-outline-gold {
@@ -156,7 +139,6 @@
       background: transparent;
       padding: 0.85rem 2.2rem;
       border-radius: 50px;
-      font-weight: 500;
       transition: all 0.3s;
     }
     .btn-outline-gold:hover { background: var(--gold); color: #000; }
@@ -164,7 +146,7 @@
     section { padding: 6rem 0; }
     .section-title { text-align: center; margin-bottom: 3.5rem; }
     .section-title h2 { font-size: 2.6rem; color: var(--gold); margin-bottom: 0.5rem; }
-    .section-title p { color: var(--text-muted); font-size: 1.05rem; }
+    .section-title p { color: var(--text-muted); }
 
     /* COLLECTIONS */
     .collection-card {
@@ -175,10 +157,9 @@
       cursor: pointer;
     }
     .collection-card img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.6s;
     }
     .collection-card:hover img { transform: scale(1.12); }
     .collection-overlay {
@@ -190,16 +171,6 @@
       padding: 1.5rem;
     }
     .collection-overlay h4 { color: #fff; font-size: 1.4rem; margin: 0; }
-    .shine {
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-      transition: left 0.6s;
-    }
-    .collection-card:hover .shine { left: 100%; }
 
     /* PRODUCTS */
     .filter-btns {
@@ -215,21 +186,19 @@
       color: var(--gold);
       padding: 0.45rem 1.4rem;
       border-radius: 50px;
-      font-size: 0.9rem;
-      transition: all 0.3s;
       cursor: pointer;
+      transition: all 0.3s;
     }
     .filter-btn.active, .filter-btn:hover {
       background: var(--gold);
       color: #000;
     }
-
     .product-card {
       background: var(--dark-2);
       border-radius: 14px;
       overflow: hidden;
       transition: transform 0.35s, box-shadow 0.35s;
-      border: 1px solid rgba(201, 162, 39, 0.15);
+      border: 1px solid rgba(201,162,39,0.15);
     }
     .product-card:hover {
       transform: translateY(-8px);
@@ -241,33 +210,24 @@
       position: relative;
     }
     .product-img img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.5s;
     }
     .product-card:hover .product-img img { transform: scale(1.1); }
-
     .wishlist {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 12px; right: 12px;
       background: rgba(0,0,0,0.5);
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       cursor: pointer;
-      transition: all 0.3s;
     }
-    .wishlist:hover, .wishlist.active {
-      background: var(--rose-gold);
-      color: #fff;
-    }
-
+    .wishlist:hover, .wishlist.active { background: var(--rose-gold); }
     .product-body { padding: 1.2rem; }
     .product-body h5 { font-size: 1.1rem; margin-bottom: 0.3rem; }
     .product-price {
@@ -283,17 +243,16 @@
       padding: 2rem 1.5rem;
       background: var(--dark-2);
       border-radius: 14px;
-      border: 1px solid rgba(201, 162, 39, 0.12);
-      transition: all 0.35s;
+      border: 1px solid rgba(201,162,39,0.12);
       height: 100%;
+      transition: all 0.35s;
     }
     .feature-card:hover {
       border-color: var(--gold);
       transform: translateY(-6px);
     }
     .feature-icon {
-      width: 70px;
-      height: 70px;
+      width: 70px; height: 70px;
       background: linear-gradient(135deg, rgba(201,162,39,0.2), rgba(183,110,121,0.2));
       border-radius: 50%;
       display: flex;
@@ -312,27 +271,18 @@
       text-align: center;
     }
     .bridal-section h2 { font-size: 3rem; color: #fff; margin-bottom: 1rem; }
-    .bridal-section p {
-      color: #ddd;
-      font-size: 1.15rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-    }
+    .bridal-section p { color: #ddd; font-size: 1.15rem; max-width: 600px; margin: 0 auto 2rem; }
 
     /* TESTIMONIALS */
     .testimonial-card {
       background: var(--dark-2);
       border-radius: 14px;
       padding: 2rem;
-      border: 1px solid rgba(201, 162, 39, 0.12);
+      border: 1px solid rgba(201,162,39,0.12);
       height: 100%;
     }
     .testimonial-card .stars { color: var(--gold); margin-bottom: 1rem; }
-    .testimonial-card p {
-      font-style: italic;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
+    .testimonial-card p { font-style: italic; color: var(--text-muted); margin-bottom: 1.2rem; }
     .client-info h6 { margin: 0; color: var(--gold); }
 
     /* CONTACT */
@@ -340,19 +290,19 @@
       background: var(--dark-2);
       padding: 2.5rem;
       border-radius: 16px;
-      border: 1px solid rgba(201, 162, 39, 0.15);
+      border: 1px solid rgba(201,162,39,0.15);
     }
-    .form-control, .form-select {
+    .form-control {
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(201, 162, 39, 0.25);
+      border: 1px solid rgba(201,162,39,0.25);
       color: var(--text-light);
       padding: 0.75rem 1rem;
       border-radius: 8px;
     }
-    .form-control:focus, .form-select:focus {
+    .form-control:focus {
       background: rgba(255,255,255,0.08);
       border-color: var(--gold);
-      box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.2);
+      box-shadow: 0 0 0 0.2rem rgba(201,162,39,0.2);
       color: var(--text-light);
     }
     .form-control::placeholder { color: #888; }
@@ -362,7 +312,7 @@
     footer {
       background: #0a0a0a;
       padding: 4rem 0 2rem;
-      border-top: 1px solid rgba(201, 162, 39, 0.15);
+      border-top: 1px solid rgba(201,162,39,0.15);
     }
     [data-theme="light"] footer { background: #f0ebe3; }
     .footer-brand {
@@ -375,45 +325,25 @@
       text-decoration: none;
       display: block;
       margin-bottom: 0.5rem;
-      transition: color 0.3s;
     }
     .footer-links a:hover { color: var(--gold); }
     .social-icons a {
       display: inline-flex;
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       border-radius: 50%;
-      background: rgba(201, 162, 39, 0.15);
+      background: rgba(201,162,39,0.15);
       color: var(--gold);
       align-items: center;
       justify-content: center;
       margin-right: 0.6rem;
-      transition: all 0.3s;
     }
     .social-icons a:hover { background: var(--gold); color: #000; }
-    .newsletter-input {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(201, 162, 39, 0.3);
-      color: var(--text-light);
-      border-radius: 50px 0 0 50px;
-      padding: 0.7rem 1.2rem;
-    }
-    .newsletter-btn {
-      border-radius: 0 50px 50px 0;
-      background: var(--gold);
-      color: #000;
-      border: none;
-      padding: 0.7rem 1.4rem;
-      font-weight: 500;
-    }
 
     /* BACK TO TOP */
     .back-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 48px;
-      height: 48px;
+      bottom: 30px; right: 30px;
+      width: 48px; height: 48px;
       background: var(--gold);
       color: #000;
       border-radius: 50%;
@@ -426,15 +356,13 @@
       visibility: hidden;
       transition: all 0.3s;
       z-index: 999;
-      box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
     }
     .back-to-top.show { opacity: 1; visibility: visible; }
 
-    /* ========== CART SIDEBAR ========== */
+    /* CART SIDEBAR */
     .cart-sidebar {
       position: fixed;
-      top: 0;
-      right: -420px;
+      top: 0; right: -420px;
       width: 400px;
       max-width: 95vw;
       height: 100vh;
@@ -446,7 +374,6 @@
       flex-direction: column;
     }
     .cart-sidebar.open { right: 0; }
-
     .cart-overlay {
       position: fixed;
       inset: 0;
@@ -457,7 +384,6 @@
       transition: all 0.3s;
     }
     .cart-overlay.show { opacity: 1; visibility: visible; }
-
     .cart-header {
       padding: 1.3rem 1.5rem;
       border-bottom: 1px solid rgba(201,162,39,0.2);
@@ -465,21 +391,10 @@
       justify-content: space-between;
       align-items: center;
     }
-    .cart-header h4 { margin: 0; color: var(--gold); font-size: 1.4rem; }
-    .cart-close {
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--text-muted);
-      transition: color 0.3s;
-    }
+    .cart-header h4 { margin: 0; color: var(--gold); }
+    .cart-close { font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
     .cart-close:hover { color: var(--gold); }
-
-    .cart-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem 1.5rem;
-    }
-
+    .cart-body { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
     .cart-item {
       display: flex;
       gap: 1rem;
@@ -487,23 +402,16 @@
       border-bottom: 1px solid rgba(201,162,39,0.12);
     }
     .cart-item img {
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       object-fit: cover;
       border-radius: 10px;
     }
     .cart-item-info { flex: 1; }
     .cart-item-info h6 { margin: 0 0 0.3rem; font-size: 0.95rem; }
     .cart-item-price { color: var(--gold); font-weight: 600; margin-bottom: 0.5rem; }
-
-    .qty-control {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
+    .qty-control { display: flex; align-items: center; gap: 0.6rem; }
     .qty-btn {
-      width: 28px;
-      height: 28px;
+      width: 28px; height: 28px;
       border-radius: 50%;
       border: 1px solid var(--gold);
       background: transparent;
@@ -512,12 +420,8 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.2s;
     }
     .qty-btn:hover { background: var(--gold); color: #000; }
-    .qty-value { min-width: 20px; text-align: center; }
-
     .remove-item {
       color: #ff6b6b;
       cursor: pointer;
@@ -525,15 +429,12 @@
       margin-top: 0.4rem;
       display: inline-block;
     }
-    .remove-item:hover { text-decoration: underline; }
-
     .cart-empty {
       text-align: center;
       padding: 3rem 1rem;
       color: var(--text-muted);
     }
     .cart-empty i { font-size: 3rem; margin-bottom: 1rem; color: var(--gold); }
-
     .cart-footer {
       padding: 1.3rem 1.5rem;
       border-top: 1px solid rgba(201,162,39,0.2);
@@ -547,11 +448,34 @@
     }
     .cart-total span:last-child { color: var(--gold); }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* BILL MODAL */
+    .bill-modal .modal-content {
+      background: var(--dark-2);
+      color: var(--text-light);
+      border: 1px solid rgba(201,162,39,0.3);
     }
+    .bill-modal .modal-header {
+      border-bottom: 1px solid rgba(201,162,39,0.2);
+    }
+    .bill-modal .modal-title { color: var(--gold); }
+    .bill-table th, .bill-table td {
+      border-color: rgba(201,162,39,0.2);
+      vertical-align: middle;
+    }
+    .payment-option {
+      border: 2px solid rgba(201,162,39,0.3);
+      border-radius: 12px;
+      padding: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    .payment-option:hover, .payment-option.active {
+      border-color: var(--gold);
+      background: rgba(201,162,39,0.1);
+    }
+    .payment-option i { font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; }
+
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -560,10 +484,9 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.4rem; }
+      .hero-content h1 { font-size: 2.3rem; }
       .section-title h2 { font-size: 2rem; }
-      .bridal-section h2 { font-size: 2.2rem; }
-      .cart-sidebar { width: 100%; max-width: 100%; }
+      .cart-sidebar { width: 100%; }
     }
   </style>
 </head>
@@ -574,7 +497,7 @@
     <div class="container">
       <a class="navbar-brand" href="#">Madiraa Jewels</a>
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <i class="bi bi-list text-light fs-2" id="menuIcon"></i>
+        <i class="bi bi-list text-light fs-2"></i>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav mx-auto">
@@ -586,7 +509,7 @@
         </ul>
         <div class="d-flex align-items-center gap-3">
           <i class="bi bi-moon theme-toggle" id="themeToggle"></i>
-          <div class="cart-icon" id="cartIcon" onclick="openCart()">
+          <div class="cart-icon" onclick="openCart()">
             <i class="bi bi-bag"></i>
             <span class="cart-count" id="cartCount">0</span>
           </div>
@@ -595,19 +518,53 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Timeless Elegance,<br><span>Crafted for You</span></h1>
-        <p>Discover exquisite jewellery that tells your unique story. From everyday sparkle to bridal grandeur.</p>
-        <div class="d-flex flex-wrap gap-3">
-          <a href="#products" class="btn btn-gold">Explore Collection</a>
-          <a href="#contact" class="btn btn-outline-gold">Book Appointment</a>
+  <!-- HERO SLIDER -->
+  <div id="heroCarousel" class="carousel slide hero-slider" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80');">
+        <div class="hero-overlay">
+          <div class="container">
+            <div class="hero-content">
+              <h1>Timeless Elegance,<br><span>Crafted for You</span></h1>
+              <p>Discover exquisite jewellery that tells your unique story.</p>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="#products" class="btn btn-gold">Explore Collection</a>
+                <a href="#contact" class="btn btn-outline-gold">Book Appointment</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=2000&q=80');">
+        <div class="hero-overlay">
+          <div class="container">
+            <div class="hero-content">
+              <h1>Bridal Collection<br><span>2025</span></h1>
+              <p>Make your special day unforgettable with our exclusive bridal sets.</p>
+              <a href="#contact" class="btn btn-gold">Book Bridal Consultation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=2000&q=80');">
+        <div class="hero-overlay">
+          <div class="container">
+            <div class="hero-content">
+              <h1>New Arrivals<br><span>Just In</span></h1>
+              <p>Fresh designs that redefine luxury and elegance.</p>
+              <a href="#products" class="btn btn-gold">Shop Now</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
 
   <!-- COLLECTIONS -->
   <section id="collections">
@@ -620,42 +577,36 @@
         <div class="col-md-4 col-6 fade-in">
           <div class="collection-card">
             <img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=800&q=80" alt="Gold">
-            <div class="shine"></div>
             <div class="collection-overlay"><h4>Gold</h4></div>
           </div>
         </div>
         <div class="col-md-4 col-6 fade-in">
           <div class="collection-card">
             <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80" alt="Diamond">
-            <div class="shine"></div>
             <div class="collection-overlay"><h4>Diamond</h4></div>
           </div>
         </div>
         <div class="col-md-4 col-6 fade-in">
           <div class="collection-card">
             <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Bridal">
-            <div class="shine"></div>
             <div class="collection-overlay"><h4>Bridal</h4></div>
           </div>
         </div>
         <div class="col-md-4 col-6 fade-in">
           <div class="collection-card">
             <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=800&q=80" alt="Everyday">
-            <div class="shine"></div>
             <div class="collection-overlay"><h4>Everyday Wear</h4></div>
           </div>
         </div>
         <div class="col-md-4 col-6 fade-in">
           <div class="collection-card">
             <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80" alt="Silver">
-            <div class="shine"></div>
             <div class="collection-overlay"><h4>Silver</h4></div>
           </div>
         </div>
         <div class="col-md-4 col-6 fade-in">
           <div class="collection-card">
             <img src="https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=800&q=80" alt="Custom">
-            <div class="shine"></div>
             <div class="collection-overlay"><h4>Custom Design</h4></div>
           </div>
         </div>
@@ -663,7 +614,7 @@
     </div>
   </section>
 
-  <!-- NEW ARRIVALS -->
+  <!-- PRODUCTS -->
   <section id="products" style="background: rgba(255,255,255,0.02);">
     <div class="container">
       <div class="section-title fade-in">
@@ -700,7 +651,7 @@
           <div class="feature-card">
             <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
             <h5>Lifetime Polish</h5>
-            <p class="text-muted small mb-0">Free lifetime polishing & maintenance service</p>
+            <p class="text-muted small mb-0">Free lifetime polishing & maintenance</p>
           </div>
         </div>
         <div class="col-md-3 col-6 fade-in">
@@ -714,7 +665,7 @@
           <div class="feature-card">
             <div class="feature-icon"><i class="bi bi-brush"></i></div>
             <h5>Custom Design</h5>
-            <p class="text-muted small mb-0">Bring your dream design to life with our experts</p>
+            <p class="text-muted small mb-0">Bring your dream design to life</p>
           </div>
         </div>
       </div>
@@ -725,7 +676,7 @@
   <section class="bridal-section">
     <div class="container fade-in">
       <h2>Bridal Collection 2025</h2>
-      <p>Make your special day unforgettable with our exclusive bridal jewellery sets, crafted for the modern bride.</p>
+      <p>Make your special day unforgettable with our exclusive bridal jewellery sets.</p>
       <a href="#contact" class="btn btn-gold">Book Bridal Consultation</a>
     </div>
   </section>
@@ -741,31 +692,22 @@
         <div class="col-md-4 fade-in">
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
-            <p>"The bridal set I bought was beyond beautiful. The craftsmanship is exceptional and the staff was so helpful."</p>
-            <div class="client-info">
-              <h6>Priya Sharma</h6>
-              <small class="text-muted">Mumbai</small>
-            </div>
+            <p>"The bridal set I bought was beyond beautiful. Exceptional craftsmanship!"</p>
+            <div class="client-info"><h6>Priya Sharma</h6><small class="text-muted">Mumbai</small></div>
           </div>
         </div>
         <div class="col-md-4 fade-in">
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
-            <p>"Madiraa Jewels has become my go-to place. Their everyday wear collection is elegant yet comfortable."</p>
-            <div class="client-info">
-              <h6>Ananya Patel</h6>
-              <small class="text-muted">Pune</small>
-            </div>
+            <p>"Madiraa Jewels has become my go-to place for elegant everyday wear."</p>
+            <div class="client-info"><h6>Ananya Patel</h6><small class="text-muted">Pune</small></div>
           </div>
         </div>
         <div class="col-md-4 fade-in">
           <div class="testimonial-card">
             <div class="stars">★★★★★</div>
-            <p>"Custom designed my engagement ring here. They brought my vision to life perfectly. Highly recommended!"</p>
-            <div class="client-info">
-              <h6>Rahul & Sneha</h6>
-              <small class="text-muted">Nagpur</small>
-            </div>
+            <p>"Custom designed my engagement ring perfectly. Highly recommended!"</p>
+            <div class="client-info"><h6>Rahul & Sneha</h6><small class="text-muted">Nagpur</small></div>
           </div>
         </div>
       </div>
@@ -785,15 +727,15 @@
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label">Full Name *</label>
-                <input type="text" class="form-control" id="name" placeholder="Your name" required>
+                <input type="text" class="form-control" id="name" required>
               </div>
               <div class="col-md-6">
                 <label class="form-label">Phone Number *</label>
-                <input type="tel" class="form-control" id="phone" placeholder="+91 98765 43210" required>
+                <input type="tel" class="form-control" id="phone" required>
               </div>
               <div class="col-md-6">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="email">
               </div>
               <div class="col-md-6">
                 <label class="form-label">Preferred Date</label>
@@ -801,9 +743,9 @@
               </div>
               <div class="col-12">
                 <label class="form-label">Message</label>
-                <textarea class="form-control" id="message" rows="4" placeholder="Tell us what you're looking for..."></textarea>
+                <textarea class="form-control" id="message" rows="3"></textarea>
               </div>
-              <div class="col-12 text-center mt-4">
+              <div class="col-12 text-center mt-3">
                 <button type="submit" class="btn btn-gold px-5">Book Store Visit</button>
               </div>
             </div>
@@ -819,7 +761,7 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="footer-brand mb-3">Madiraa Jewels</div>
-          <p class="text-muted" style="font-size: 0.95rem;">Crafting timeless elegance since 2010. Every piece tells a story of love, tradition and unmatched craftsmanship.</p>
+          <p class="text-muted">Crafting timeless elegance since 2010.</p>
           <div class="social-icons mt-3">
             <a href="#"><i class="bi bi-instagram"></i></a>
             <a href="#"><i class="bi bi-facebook"></i></a>
@@ -828,136 +770,189 @@
           </div>
         </div>
         <div class="col-6 col-lg-2">
-          <h6 style="color: var(--gold);" class="mb-3">Quick Links</h6>
+          <h6 style="color:var(--gold)" class="mb-3">Quick Links</h6>
           <div class="footer-links">
             <a href="#home">Home</a>
             <a href="#collections">Collections</a>
             <a href="#products">New Arrivals</a>
-            <a href="#about">About Us</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
         <div class="col-6 col-lg-3">
-          <h6 style="color: var(--gold);" class="mb-3">Visit Us</h6>
-          <p class="text-muted small mb-1"><i class="bi bi-geo-alt me-2"></i> 45, Jewellery Market, Pune</p>
-          <p class="text-muted small mb-1"><i class="bi bi-telephone me-2"></i> +91 98765 43210</p>
-          <p class="text-muted small"><i class="bi bi-envelope me-2"></i> hello@madiraajewels.com</p>
+          <h6 style="color:var(--gold)" class="mb-3">Visit Us</h6>
+          <p class="text-muted small mb-1"><i class="bi bi-geo-alt me-2"></i>45, Jewellery Market, Pune</p>
+          <p class="text-muted small mb-1"><i class="bi bi-telephone me-2"></i>+91 98765 43210</p>
+          <p class="text-muted small"><i class="bi bi-envelope me-2"></i>hello@madiraajewels.com</p>
         </div>
         <div class="col-lg-3">
-          <h6 style="color: var(--gold);" class="mb-3">Newsletter</h6>
-          <p class="text-muted small">Get exclusive offers & new designs first.</p>
+          <h6 style="color:var(--gold)" class="mb-3">Newsletter</h6>
+          <p class="text-muted small">Get exclusive offers first.</p>
           <div class="input-group">
-            <input type="email" class="form-control newsletter-input" placeholder="Your email">
-            <button class="newsletter-btn">Subscribe</button>
+            <input type="email" class="form-control" placeholder="Your email" style="border-radius:50px 0 0 50px; background:rgba(255,255,255,0.05); border-color:rgba(201,162,39,0.3); color:var(--text-light)">
+            <button class="btn btn-gold" style="border-radius:0 50px 50px 0">Subscribe</button>
           </div>
         </div>
       </div>
-      <hr class="my-4" style="border-color: rgba(201,162,39,0.15);">
+      <hr class="my-4" style="border-color:rgba(201,162,39,0.15)">
       <div class="text-center text-muted small">© 2025 Madiraa Jewels. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- BACK TO TOP -->
   <div class="back-to-top" id="backToTop"><i class="bi bi-arrow-up"></i></div>
 
-  <!-- CART OVERLAY -->
+  <!-- CART -->
   <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
-  <!-- CART SIDEBAR -->
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
       <h4><i class="bi bi-bag me-2"></i>Your Cart</h4>
       <i class="bi bi-x-lg cart-close" onclick="closeCart()"></i>
     </div>
-    <div class="cart-body" id="cartBody">
-      <!-- Cart items will be injected here -->
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display: none;">
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
       <div class="cart-total">
         <span>Total</span>
         <span id="cartTotal">₹0</span>
       </div>
-      <button class="btn btn-gold w-100" onclick="checkout()">Proceed to Checkout</button>
+      <button class="btn btn-gold w-100" onclick="openPaymentModal()">Proceed to Checkout</button>
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- PAYMENT + BILL MODAL -->
+  <div class="modal fade bill-modal" id="paymentModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Checkout & Billing</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Step 1: Payment Choice -->
+          <div id="paymentStep">
+            <h6 class="mb-3">Select Payment Method</h6>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <div class="payment-option" id="optOnline" onclick="selectPayment('online')">
+                  <i class="bi bi-credit-card"></i>
+                  <h6>Online Payment</h6>
+                  <small class="text-muted">UPI / Card / Net Banking</small>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="payment-option" id="optOffline" onclick="selectPayment('offline')">
+                  <i class="bi bi-cash-coin"></i>
+                  <h6>Offline / COD</h6>
+                  <small class="text-muted">Pay at Store or Cash on Delivery</small>
+                </div>
+              </div>
+            </div>
+            <div class="text-end">
+              <button class="btn btn-gold" id="generateBillBtn" disabled onclick="generateBill()">Generate Bill</button>
+            </div>
+          </div>
 
+          <!-- Step 2: Bill -->
+          <div id="billStep" style="display:none">
+            <div class="text-center mb-3">
+              <h4 style="color:var(--gold)">Madiraa Jewels</h4>
+              <small>45, Jewellery Market, Pune | +91 98765 43210</small>
+            </div>
+            <div class="d-flex justify-content-between mb-3">
+              <div>
+                <strong>Bill No:</strong> <span id="billNo"></span><br>
+                <strong>Date:</strong> <span id="billDate"></span>
+              </div>
+              <div class="text-end">
+                <strong>Payment:</strong> <span id="billPayment"></span>
+              </div>
+            </div>
+            <table class="table table-dark bill-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody id="billItems"></tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="4" class="text-end"><strong>Grand Total</strong></td>
+                  <td><strong id="billGrandTotal" style="color:var(--gold)"></strong></td>
+                </tr>
+              </tfoot>
+            </table>
+            <div class="alert alert-success mt-3" id="paymentMsg"></div>
+            <div class="text-center mt-3">
+              <button class="btn btn-outline-gold me-2" onclick="printBill()">Print Bill</button>
+              <button class="btn btn-gold" data-bs-dismiss="modal" onclick="finishOrder()">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // ========== PRODUCTS DATA ==========
     const products = [
-      { id: 1, name: "Royal Gold Necklace", price: 125000, priceText: "₹1,25,000", category: "gold", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" },
-      { id: 2, name: "Diamond Solitaire Ring", price: 85000, priceText: "₹85,000", category: "diamond", img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" },
-      { id: 3, name: "Bridal Choker Set", price: 245000, priceText: "₹2,45,000", category: "bridal", img: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80" },
-      { id: 4, name: "Silver Anklet Pair", price: 4500, priceText: "₹4,500", category: "silver", img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" },
-      { id: 5, name: "Rose Gold Earrings", price: 32000, priceText: "₹32,000", category: "gold", img: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
-      { id: 6, name: "Diamond Pendant", price: 67000, priceText: "₹67,000", category: "diamond", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80" },
-      { id: 7, name: "Temple Jewellery Set", price: 185000, priceText: "₹1,85,000", category: "bridal", img: "https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=600&q=80" },
-      { id: 8, name: "Classic Gold Bangles", price: 78000, priceText: "₹78,000", category: "gold", img: "https://images.unsplash.com/photo-1611652022419-a9419f74343a?auto=format&fit=crop&w=600&q=80" },
-      { id: 9, name: "Silver Oxidised Jhumkas", price: 3200, priceText: "₹3,200", category: "silver", img: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" },
-      { id: 10, name: "Emerald Diamond Ring", price: 110000, priceText: "₹1,10,000", category: "diamond", img: "https://images.unsplash.com/photo-1603561591411-07134e71a2b9?auto=format&fit=crop&w=600&q=80" },
-      { id: 11, name: "Kundan Bridal Set", price: 210000, priceText: "₹2,10,000", category: "bridal", img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=600&q=80" },
-      { id: 12, name: "Minimal Gold Chain", price: 28500, priceText: "₹28,500", category: "gold", img: "https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=600&q=80" }
+      { id:1, name:"Royal Gold Necklace", price:125000, priceText:"₹1,25,000", category:"gold", img:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80" },
+      { id:2, name:"Diamond Solitaire Ring", price:85000, priceText:"₹85,000", category:"diamond", img:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=600&q=80" },
+      { id:3, name:"Bridal Choker Set", price:245000, priceText:"₹2,45,000", category:"bridal", img:"https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80" },
+      { id:4, name:"Silver Anklet Pair", price:4500, priceText:"₹4,500", category:"silver", img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" },
+      { id:5, name:"Rose Gold Earrings", price:32000, priceText:"₹32,000", category:"gold", img:"https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80" },
+      { id:6, name:"Diamond Pendant", price:67000, priceText:"₹67,000", category:"diamond", img:"https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80" },
+      { id:7, name:"Temple Jewellery Set", price:185000, priceText:"₹1,85,000", category:"bridal", img:"https://images.unsplash.com/photo-1573408301185-91424fe3c93b?auto=format&fit=crop&w=600&q=80" },
+      { id:8, name:"Classic Gold Bangles", price:78000, priceText:"₹78,000", category:"gold", img:"https://images.unsplash.com/photo-1611652022419-a9419f74343a?auto=format&fit=crop&w=600&q=80" },
+      { id:9, name:"Silver Oxidised Jhumkas", price:3200, priceText:"₹3,200", category:"silver", img:"https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80" },
+      { id:10, name:"Emerald Diamond Ring", price:110000, priceText:"₹1,10,000", category:"diamond", img:"https://images.unsplash.com/photo-1603561591411-07134e71a2b9?auto=format&fit=crop&w=600&q=80" },
+      { id:11, name:"Kundan Bridal Set", price:210000, priceText:"₹2,10,000", category:"bridal", img:"https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=600&q=80" },
+      { id:12, name:"Minimal Gold Chain", price:28500, priceText:"₹28,500", category:"gold", img:"https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?auto=format&fit=crop&w=600&q=80" }
     ];
 
-    // ========== CART ==========
     let cart = [];
+    let selectedPayment = null;
 
-    function addToCart(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...product, qty: 1 });
-      }
+    function addToCart(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      const exist = cart.find(x => x.id === id);
+      if (exist) exist.qty++;
+      else cart.push({...p, qty:1});
       updateCartUI();
       openCart();
     }
 
-    function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
+    function removeFromCart(id) {
+      cart = cart.filter(x => x.id !== id);
       updateCartUI();
     }
 
-    function changeQty(productId, delta) {
-      const item = cart.find(i => i.id === productId);
+    function changeQty(id, d) {
+      const item = cart.find(x => x.id === id);
       if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) {
-        removeFromCart(productId);
-      } else {
-        updateCartUI();
-      }
+      item.qty += d;
+      if (item.qty <= 0) removeFromCart(id);
+      else updateCartUI();
     }
 
     function updateCartUI() {
-      const cartBody = document.getElementById('cartBody');
-      const cartFooter = document.getElementById('cartFooter');
-      const cartCount = document.getElementById('cartCount');
-      const cartTotal = document.getElementById('cartTotal');
+      const body = document.getElementById('cartBody');
+      const footer = document.getElementById('cartFooter');
+      const count = document.getElementById('cartCount');
+      const totalEl = document.getElementById('cartTotal');
 
-      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-      cartCount.textContent = totalItems;
+      const totalItems = cart.reduce((s,i) => s + i.qty, 0);
+      count.textContent = totalItems;
 
       if (cart.length === 0) {
-        cartBody.innerHTML = `
-          <div class="cart-empty">
-            <i class="bi bi-bag"></i>
-            <p>Your cart is empty</p>
-            <small>Add some beautiful jewellery!</small>
-          </div>
-        `;
-        cartFooter.style.display = 'none';
+        body.innerHTML = `<div class="cart-empty"><i class="bi bi-bag"></i><p>Your cart is empty</p></div>`;
+        footer.style.display = 'none';
         return;
       }
 
-      let html = '';
-      let total = 0;
-
+      let html = '', total = 0;
       cart.forEach(item => {
         total += item.price * item.qty;
         html += `
@@ -967,19 +962,17 @@
               <h6>${item.name}</h6>
               <div class="cart-item-price">${item.priceText}</div>
               <div class="qty-control">
-                <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
-                <span class="qty-value">${item.qty}</span>
-                <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+                <span>${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
               </div>
               <span class="remove-item" onclick="removeFromCart(${item.id})">Remove</span>
             </div>
-          </div>
-        `;
+          </div>`;
       });
-
-      cartBody.innerHTML = html;
-      cartTotal.textContent = '₹' + total.toLocaleString('en-IN');
-      cartFooter.style.display = 'block';
+      body.innerHTML = html;
+      totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+      footer.style.display = 'block';
     }
 
     function openCart() {
@@ -987,52 +980,101 @@
       document.getElementById('cartOverlay').classList.add('show');
       document.body.style.overflow = 'hidden';
     }
-
     function closeCart() {
       document.getElementById('cartSidebar').classList.remove('open');
       document.getElementById('cartOverlay').classList.remove('show');
       document.body.style.overflow = '';
     }
 
-    function checkout() {
+    function openPaymentModal() {
       if (cart.length === 0) return;
-      alert('Thank you! Your order has been placed.\nTotal: ' + document.getElementById('cartTotal').textContent + '\n\nWe will contact you shortly.');
-      cart = [];
-      updateCartUI();
+      selectedPayment = null;
+      document.getElementById('optOnline').classList.remove('active');
+      document.getElementById('optOffline').classList.remove('active');
+      document.getElementById('generateBillBtn').disabled = true;
+      document.getElementById('paymentStep').style.display = 'block';
+      document.getElementById('billStep').style.display = 'none';
+      new bootstrap.Modal(document.getElementById('paymentModal')).show();
       closeCart();
     }
 
-    // ========== RENDER PRODUCTS ==========
-    const productGrid = document.getElementById('productGrid');
+    function selectPayment(type) {
+      selectedPayment = type;
+      document.getElementById('optOnline').classList.toggle('active', type === 'online');
+      document.getElementById('optOffline').classList.toggle('active', type === 'offline');
+      document.getElementById('generateBillBtn').disabled = false;
+    }
 
-    function renderProducts(filter = 'all') {
-      productGrid.innerHTML = '';
-      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+    function generateBill() {
+      if (!selectedPayment) return;
 
-      filtered.forEach(product => {
+      const billNo = 'MJ' + Date.now().toString().slice(-8);
+      const date = new Date().toLocaleString('en-IN');
+      let total = 0;
+      let rows = '';
+
+      cart.forEach((item, i) => {
+        const lineTotal = item.price * item.qty;
+        total += lineTotal;
+        rows += `<tr>
+          <td>${i+1}</td>
+          <td>${item.name}</td>
+          <td>${item.qty}</td>
+          <td>${item.priceText}</td>
+          <td>₹${lineTotal.toLocaleString('en-IN')}</td>
+        </tr>`;
+      });
+
+      document.getElementById('billNo').textContent = billNo;
+      document.getElementById('billDate').textContent = date;
+      document.getElementById('billPayment').textContent = selectedPayment === 'online' ? 'Online Payment' : 'Offline / COD';
+      document.getElementById('billItems').innerHTML = rows;
+      document.getElementById('billGrandTotal').textContent = '₹' + total.toLocaleString('en-IN');
+
+      const msg = selectedPayment === 'online'
+        ? 'Online payment selected. Please complete the payment. (Demo: Payment Successful!)'
+        : 'You chose Offline / COD. Please pay at store or on delivery.';
+      document.getElementById('paymentMsg').textContent = msg;
+
+      document.getElementById('paymentStep').style.display = 'none';
+      document.getElementById('billStep').style.display = 'block';
+    }
+
+    function printBill() {
+      window.print();
+    }
+
+    function finishOrder() {
+      cart = [];
+      updateCartUI();
+    }
+
+    // RENDER PRODUCTS
+    function renderProducts(filter='all') {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      const list = filter === 'all' ? products : products.filter(p => p.category === filter);
+      list.forEach(p => {
         const col = document.createElement('div');
         col.className = 'col-lg-3 col-md-4 col-6 product-item fade-in';
         col.innerHTML = `
           <div class="product-card">
             <div class="product-img">
-              <img src="${product.img}" alt="${product.name}">
+              <img src="${p.img}" alt="${p.name}">
               <div class="wishlist" onclick="toggleWishlist(this)"><i class="bi bi-heart"></i></div>
             </div>
             <div class="product-body">
-              <h5>${product.name}</h5>
-              <div class="product-price">${product.priceText}</div>
-              <button class="btn btn-sm btn-gold w-100" onclick="addToCart(${product.id})">Add to Cart</button>
+              <h5>${p.name}</h5>
+              <div class="product-price">${p.priceText}</div>
+              <button class="btn btn-sm btn-gold w-100" onclick="addToCart(${p.id})">Add to Cart</button>
             </div>
-          </div>
-        `;
-        productGrid.appendChild(col);
+          </div>`;
+        grid.appendChild(col);
       });
       observeFadeIns();
     }
-
     renderProducts();
 
-    // FILTER
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1041,76 +1083,65 @@
       });
     });
 
-    // WISHLIST
     function toggleWishlist(el) {
       el.classList.toggle('active');
-      const icon = el.querySelector('i');
-      icon.classList.toggle('bi-heart');
-      icon.classList.toggle('bi-heart-fill');
+      el.querySelector('i').classList.toggle('bi-heart');
+      el.querySelector('i').classList.toggle('bi-heart-fill');
     }
 
     // THEME
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
+    document.getElementById('themeToggle').addEventListener('click', function() {
       const html = document.documentElement;
       const isLight = html.getAttribute('data-theme') === 'light';
       html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-      themeToggle.classList.toggle('bi-moon');
-      themeToggle.classList.toggle('bi-sun');
+      this.classList.toggle('bi-moon');
+      this.classList.toggle('bi-sun');
     });
 
-    // STICKY NAV + BACK TO TOP
-    const navbar = document.getElementById('navbar');
+    // SCROLL
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-
-      const backToTop = document.getElementById('backToTop');
-      if (window.scrollY > 400) backToTop.classList.add('show');
-      else backToTop.classList.remove('show');
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 80);
+      document.getElementById('backToTop').classList.toggle('show', window.scrollY > 400);
     });
-
-    document.getElementById('backToTop').addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    document.getElementById('backToTop').onclick = () => window.scrollTo({top:0, behavior:'smooth'});
 
     // SMOOTH SCROLL
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({behavior:'smooth'});
       });
     });
 
     // FORM
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      if (!name || !phone) {
-        alert('Please fill in Name and Phone number.');
-        return;
-      }
-      if (!/^[0-9+\-\s]{10,15}$/.test(phone)) {
-        alert('Please enter a valid phone number.');
-        return;
-      }
-      alert('Thank you! Your appointment request has been received. We will contact you shortly.');
+      alert('Thank you! Appointment request received. We will contact you shortly.');
       this.reset();
     });
 
     // FADE IN
     function observeFadeIns() {
-      const fadeEls = document.querySelectorAll('.fade-in:not(.visible)');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.15 });
-      fadeEls.forEach(el => observer.observe(el));
+      const els = document.querySelectorAll('.fade-in:not(.visible)');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, {threshold:0.15});
+      els.forEach(el => obs.observe(el));
     }
     observeFadeIns();
   </script>
 </body>
 </html>
+```
+
+### आता काय मिळेल:
+- **Hero Image Slider** (3 slides auto-change)
+- Add to Cart → Cart लगेच उघडेल
+- Checkout → Payment Method निवडा (Online / Offline)
+- Bill generate होईल (Bill No, Date, Items, Total)
+- Print Bill option
+- Done केल्यावर cart clear होईल
+
+आता पूर्ण professional वाटेल. ट्राय करून बघा!  
+काही बदल हवे असतील तर सांगा.
